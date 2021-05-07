@@ -123,6 +123,7 @@ def checkStreamers():
         elif r['is_live']==False:
             streamers.at[streamers.loc[streamers['streamername']==streamer].index[0], 'is_live'] = False
         streamers.to_csv('db_streamers.csv')
+    print('Done')
         
 
 t = set_interval(checkStreamers, 300)
