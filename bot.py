@@ -16,9 +16,9 @@ def set_interval(func, sec):
     return t
 
 bot = telebot.TeleBot(token, parse_mode=None)
-try:
-    users = pd.read_csv('db_users.csv', index_col=0, dtype={'subs': 'str', 'id': 'int'}).fillna('')
-    streamers = pd.read_csv('db_streamers.csv', index_col=0, dtype={'subs': 'str'}).fillna('')
+
+users = pd.read_csv('db_users.csv', index_col=0, dtype={'subs': 'str', 'id': 'int'}).fillna('')
+streamers = pd.read_csv('db_streamers.csv', index_col=0, dtype={'subs': 'str'}).fillna('')
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
