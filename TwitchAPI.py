@@ -17,10 +17,13 @@ def getUser(user):
         'client-id': clientID,
     }
     r = json.loads(requests.get(url, headers = headers).text)
-    return [x for x in r['data'] if x['display_name']==user][0]
+    l = [x for x in r['data'] if x['display_name'].lower()==user.lower()]
+    if len(l)==0:
+        return None
+    return l[0]
 
 if __name__ == '__main__':
-    print(getUser('SilverName'))
+    print(getUser('riotgamesru'))
     
     streamers = pd.read_csv('db_streamers.csv', index_col=0, dtype={'subs': 'str'}).fillna('')
     print(streamers.values)
